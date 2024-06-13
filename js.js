@@ -9,7 +9,19 @@ $(document).ready(function(){
     })
 
     $('form').on('submit', function(e){
-        console.log("Submit");
         e.preventDefault();  
+        const URL = $('#URL').val();
+        const NovoI = $('<li style="display: none"></li>');
+        $(`<img src="${URL}" />`).appendTo(NovoI)
+        $(`
+            <div class="overlay">
+                <a href="${URL}" target="_blanck" title="Ver tamanho original">
+                    Ver tamanho original
+                </a>
+            </div>
+        `).appendTo(NovoI);
+        $(NovoI).appendTo('ul');
+        $(NovoI).fadeIn(1000);
+        $('#URL').val('');
     })
 })
